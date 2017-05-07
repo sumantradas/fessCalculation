@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="feeStructure">
+	<head>
+		<title>Fees structure</title>
+		<!-- angular library -->
+		<script src="libraries/angular.min.js"></script>
+		<!-- App Js -->
+	    <script src="app.js" type="text/javascript"></script>
+	     <!-- services -->
+	    <script src="services/feesAmount.js" type="text/javascript"></script>
+	    <!-- controller -->
+	    <script src="controllers/totalFee.js" type="text/javascript"></script>
+	    <!-- CSS -->
+	    <link rel="stylesheet" type="text/css" href="css/styles.css">
+	</head>
+	<body ng-controller= "totalFee">
+
+		<h2> Fee Structure </h2>
+
+		<label>
+			1.Select Type of Fee: 
+			<select ng-model="selectedFee" ng-options="key for  (key,value) in feeData" ng-class="{'isSelected': !!selectedFee}"></select>
+
+		</label>
+		<label>
+			2.Select Nationality: 
+			<select ng-model="selectedNationality" ng-options="key for  (key,value) in selectedFee" ng-disabled="!!!selectedFee" ng-class="{'isSelected': !!selectedNationality}"></select>
+		</label>
+		<label>
+			3.Select Course: 
+			<select ng-model="selectedCourse" ng-options="key for  (key,value) in selectedNationality" 
+			ng-disabled="!!!selectedNationality" ng-class="{'isSelected': !!selectedCourse}"></select>
+		</label>
+		<label>
+			4.Select Level: 
+			<select ng-model="selectedLevel" ng-options="key for  (key,value) in selectedCourse" ng-disabled="!!!selectedCourse" ng-class="{'isSelected': !!selectedLevel}"></select>
+		</label>
+		<label>
+			<b>Required Fee Amount: </b>
+			<input type="number" disabled ng-model="selectedLevel.amount" class = "amount"></input>
+		</label>
+
+	</body>
+</html>
